@@ -1,0 +1,16 @@
+{
+  "name": "citation_manager",
+  "version": "1.0.0",
+  "description": "UCL Citation Manager web app for Scenario Week 3 (Team P)",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scenario-Week-3-Team-P/WebApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Scenario-Week-3-Team-P/WebApp/issues"
+  },
+  "homepage": "https://github.com/Scenario-Week-3-Team-P/WebApp#readme"
+}
