@@ -22,13 +22,13 @@ class CitationCreate(generic.CreateView):
     fields = ['title', 'content']
     template_name_suffix = '_create_form'
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
-
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 class CitationUpdate(generic.UpdateView):
@@ -36,7 +36,21 @@ class CitationUpdate(generic.UpdateView):
     fields = ['title', 'content',]
     template_name_suffix = '_update_form'
 
+    def get_queryset(self):
+        return Citation.objects.filter(user=self.request.user)
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
 
 class CitationDetail(generic.DetailView):
     model = Citation
     slug_field = 'slug'
+
+    def get_queryset(self):
+        return Citation.objects.filter(user=self.request.user)
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
