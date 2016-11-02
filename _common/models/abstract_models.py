@@ -7,8 +7,6 @@ from django.utils import formats
 from django.utils.text import slugify
 from django.template.defaultfilters import striptags
 
-from redactor.fields import RedactorField
-
 
 class TimeStampedModel(models.Model):
     """Model for adding created and modified fields to models."""
@@ -81,14 +79,13 @@ class VoteableModel(models.Model):
         abstract = True
 
 
-class RichTextAndPreviewTextModel(models.Model):
+class TextAndPreviewTextModel(models.Model):
     """
     Model which has a RedactorField for Rich text editing and a function which
     returns a snippet of the content in the rich text field.
     """
 
-    content = RedactorField(allow_file_upload=False, allow_image_upload=True,
-                            blank=True)
+    content = models.TextField(blank=True)
 
     def get_preview_content(self, words=31):
         """

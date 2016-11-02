@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block page %}
+    <h1>{{ object.title }}</h1>
+    <p>{{ object.content }}</p>
+    <small>{{ object.created | date }}</small>
+    <a href="{% url 'citation:edit' object.slug %}">Edit</a>
+    <a href="{% url 'citation:list' %}">Back</a>
+{% endblock %}

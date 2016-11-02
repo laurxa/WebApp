@@ -1,10 +1,9 @@
 from django.conf.urls import url
-
-from .views import *
+from django.contrib.auth.views import login
 
 
 app_name = 'user'
 
 urlpatterns = [
-    url(r'^login/?$', Login.as_view(), name='login'),
+    url(r'^login/?$', login, name='login'),
 ]

@@ -4,9 +4,12 @@
     <h1>Citation list</h1>
     <ul>
         {% for citation in object_list %}
-            <li>{{ citation.title }}</li>
+            <li>
+                <a href="{% url 'citation:detail' citation.slug %}">{{ citation.title }}</a>
+                <a href="{% url 'citation:edit' citation.slug %}">Edit</a>
+            </li>
         {% empty %}
-            <li>No citations</li>
+            <a href="{% url 'citation:create' %}">Add Citation </a>
         {% endfor %}
     </ul>
 {% endblock %}

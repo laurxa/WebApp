@@ -3,4 +3,16 @@ from django.contrib import admin
 from .models import Citation
 
 
-admin.site.register(Citation)
+class CitationAdmin(admin.ModelAdmin):
+    readonly_fields = ('slug', 'created', 'modified',)
+    fieldsets = (
+        (None, {
+            'fields': ('user', 'title', 'content',),
+        },),
+        ('Additional Information', {
+            'fields': ('slug', 'created', 'modified',)
+        },)
+    )
+
+
+admin.site.register(Citation, CitationAdmin)
