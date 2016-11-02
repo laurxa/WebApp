@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block page %}
+    <h1>Citation list</h1>
+    <ul>
+        {% for citation in object_list %}
+            <li>{{ citation.title }}</li>
+        {% empty %}
+            <li>No citations</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
