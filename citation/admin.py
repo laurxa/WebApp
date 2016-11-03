@@ -4,6 +4,8 @@ from .models import Citation
 
 
 class CitationAdmin(admin.ModelAdmin):
+    list_display = ('title', 'user', 'slug', 'created')
+
     readonly_fields = ('slug', 'created', 'modified',)
     fieldsets = (
         (None, {
