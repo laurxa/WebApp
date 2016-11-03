@@ -16,3 +16,6 @@ class Citation(TimeStampedModel,
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        unique_together = ('user', 'slug')

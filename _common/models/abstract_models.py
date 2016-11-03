@@ -28,7 +28,7 @@ class SlugModel(models.Model):
     Model with a slug field that is automatically generated when the generate_slug method is called.
     Call set_slug_generator_field_name to choose the field name to generate the slug from (defaults to 'title').
     """
-    slug = models.SlugField(editable=False, unique=True)
+    slug = models.SlugField(editable=False)
     slug_generator_field_name = 'title'
 
     def generate_slug(self, field_name, i=0):
@@ -36,7 +36,7 @@ class SlugModel(models.Model):
                                       '-{}'.format(i) if i else '')
         slug = slugify(slug_source)
         try:
-            self.__class__.objects.get(slug=slug)
+            self.__class__.objects.filter(user=self.user).get(slug=slug)
             return self.generate_slug(field_name, i + 1)
         except self.DoesNotExist:
             return slug
