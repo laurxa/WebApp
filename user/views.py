@@ -1,9 +1,10 @@
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.views import login
+from django.contrib.auth import authenticate, login
 from django.views.generic import CreateView
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import user_passes_test
-from django.contrib.auth.views import login
 
 
 @user_passes_test(lambda u: not u.is_authenticated,
@@ -26,6 +27,8 @@ class Register(CreateView):
             last_name=form.data['last_name'],
         )
 
+        user = authenticate(username=form.data['username'], password=form.data['password'])
+        login(self.request, user)
         return HttpResponseRedirect('/')
 
     @method_decorator(user_passes_test(lambda u: not u.is_authenticated,
