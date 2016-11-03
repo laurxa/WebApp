@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block page %}
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button class="waves-effect waves-light btn" type="submit">Register</button>
+        <a href="{% url 'user:login' %}">Already have an account? Login!</a>
+    </form>
+
+
+{% endblock %}

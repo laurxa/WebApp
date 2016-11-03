@@ -8,7 +8,7 @@ from _common.models.abstract_models import TimeStampedModel, TextAndPreviewTextM
 class Citation(TimeStampedModel,
                TextAndPreviewTextModel,
                SlugModel):
-    user = models.OneToOneField(User)
+    user = models.ForeignKey(User)
     title = models.CharField(max_length=100)
 
     def get_absolute_url(self):

@@ -7,7 +7,6 @@ from .models import Citation
 
 class CitationList(generic.ListView):
     model = Citation
-    template_name = 'citation/list.html'
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

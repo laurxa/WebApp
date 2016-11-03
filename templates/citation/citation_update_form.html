@@ -4,8 +4,8 @@
 {% block page %}
     <form action="" method="post">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save</button>
-        <button type="reset">Revert Changes</button>
-        <a href="{% url 'citation:detail' object.slug %}">Cancel</a>
+        <button class="waves-effect waves-light btn" type="submit"><i class="material-icons left">done</i>Save</button>
+        <button class="waves-effect waves-light btn" type="reset"><i class="material-icons left">settings_backup_restore</i>Revert Changes</button>
+        <a class="waves-effect waves-light btn" href="{% url 'citation:detail' object.slug %}">Cancel</a>
     </form>
 {% endblock %}

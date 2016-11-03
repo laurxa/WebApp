@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block page %}
+    <h1>Citation list</h1>
+    <table class="bordered highlight">
+        <tbody>
+
+        {% for citation in object_list %}
+            <tr>
+                <td>
+                    <a href="{% url 'citation:detail' citation.slug %}">{{ citation.title }}</a>
+                </td>
+                <td>
+                    <a href="{% url 'citation:edit' citation.slug %}"><i class="material-icons">mode_edit</i></a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <a class="waves-effect waves-light btn" href="{% url 'citation:create' %}"><i class="material-icons left">add</i> Add New</a>
+{% endblock %}
