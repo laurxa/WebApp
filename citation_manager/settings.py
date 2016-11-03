@@ -72,15 +72,15 @@ WSGI_APPLICATION = 'citation_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-if 'RDB_DB_NAME' in os.environ:
+if 'RDS_HOSTNAME' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ['RDB_DB_NAME'],
-            'USER': os.environ['RDB_USERNAME'],
-            'PASSWORD': os.environ['RDB_PASSWORD'],
-            'HOST': os.environ['RDB_HOSTNAME'],
-            'PORT': os.environ['RDB_POST'],
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_POST'],
         }
     }
 else:
