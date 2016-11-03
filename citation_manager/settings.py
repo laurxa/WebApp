@@ -136,5 +136,5 @@ STATIC_URL = '/static/'
 # Import local_settings if it exists
 try:
     from .local_settings import *
-except FileNotFoundError:
+except ImportError:
     pass
