@@ -2,6 +2,7 @@ from django.views import generic
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
+from .forms import CitationForm
 from .models import Citation
 
 
@@ -18,7 +19,7 @@ class CitationList(generic.ListView):
 
 class CitationCreate(generic.CreateView):
     model = Citation
-    fields = ['title', 'content']
+    form_class = CitationForm
     template_name_suffix = '_create_form'
 
     def form_valid(self, form):
@@ -32,7 +33,7 @@ class CitationCreate(generic.CreateView):
 
 class CitationUpdate(generic.UpdateView):
     model = Citation
-    fields = ['title', 'content',]
+    form_class = CitationForm
     template_name_suffix = '_update_form'
 
     def get_queryset(self):
