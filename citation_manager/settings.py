@@ -80,7 +80,7 @@ if 'RDS_HOSTNAME' in os.environ:
             'USER': os.environ['RDS_USERNAME'],
             'PASSWORD': os.environ['RDS_PASSWORD'],
             'HOST': os.environ['RDS_HOSTNAME'],
-            'PORT': os.environ['RDS_POST'],
+            'PORT': os.environ['RDS_PORT'],
         }
     }
 else:
