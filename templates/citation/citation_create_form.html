@@ -5,5 +5,6 @@
     <form action="" method="post">{% csrf_token %}
         {{ form.as_p }}
     <button class="waves-effect waves-light btn" type="submit">Add Citation</button>
+    <a href="{% url 'citation:list' %}">Cancel</a>
     </form>
 {% endblock %}
