@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import login
 from django.contrib.auth import authenticate, login as login_user
+from django.contrib import messages
 from django.views.generic import CreateView
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
@@ -29,6 +30,10 @@ class Register(CreateView):
 
         user = authenticate(username=form.data['username'], password=form.data['password'])
         login_user(self.request, user)
+
+        messages.info(self.request,
+                         'Welcome to Citation Manager, {}'.format(form.data['first_name']))
+
         return HttpResponseRedirect('/')
 
     @method_decorator(user_passes_test(lambda u: not u.is_authenticated,

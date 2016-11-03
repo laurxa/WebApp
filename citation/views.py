@@ -1,6 +1,7 @@
 from django.views import generic
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from .forms import CitationForm
 from .models import Citation
@@ -38,6 +39,10 @@ class CitationUpdate(generic.UpdateView):
 
     def get_queryset(self):
         return Citation.objects.filter(user=self.request.user)
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Citation Updated Successfully')
+        return super().form_valid(form)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
