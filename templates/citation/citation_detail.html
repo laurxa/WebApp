@@ -6,5 +6,6 @@
     <small>{{ object.created | date }}</small>
     <p>{{ object.content }}</p>
     <a class="waves-effect waves-light btn" href="{% url 'citation:edit' object.slug %}">Edit</a>
+    <a class="waves-effect waves-light btn" href="{% url 'citation:delete' object.slug %}">Delete</a>
     <a class="waves-effect waves-light btn" href="{% url 'citation:list' %}">Back</a>
 {% endblock %}

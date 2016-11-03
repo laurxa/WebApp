@@ -2,6 +2,7 @@ from django.views import generic
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.urls import reverse_lazy
 
 from .forms import CitationForm
 from .models import Citation
@@ -55,6 +56,22 @@ class CitationDetail(generic.DetailView):
 
     def get_queryset(self):
         return Citation.objects.filter(user=self.request.user)
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class CitationDelete(generic.DeleteView):
+    model = Citation
+    success_url = reverse_lazy('citation:list')
+
+    def get_queryset(self):
+        return Citation.objects.filter(user=self.request.user)
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, 'Citation Deleted')
+        return super().delete(request, *args, **kwargs)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
