@@ -25,4 +25,4 @@ six==1.10.0
 texttable==0.8.6
 wcwidth==0.1.7
 websocket-client==0.37.0
-MySQL-python==1.2.5
+mysql-python==1.2.3
