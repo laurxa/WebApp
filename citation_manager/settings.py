@@ -72,10 +72,10 @@ WSGI_APPLICATION = 'citation_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-if 'RDS_HOSTNAME' in os.environ:
+if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': os.environ['RDS_DB_NAME'],
             'USER': os.environ['RDS_USERNAME'],
             'PASSWORD': os.environ['RDS_PASSWORD'],
@@ -138,7 +138,7 @@ STATICFILES_DIRS = (
 
 # AWS S3 CDN
 
-AWS_STORAGE_BUCKET_NAME = 'citation-manager-cdn'
+AWS_STORAGE_BUCKET_NAME = 'team-p-cdn'
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_KEY']
 
