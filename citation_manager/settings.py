@@ -139,8 +139,8 @@ STATICFILES_DIRS = (
 # AWS S3 CDN
 
 AWS_STORAGE_BUCKET_NAME = 'team-p-cdn'
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_KEY']
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_KEY')
 
 # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
 # it simple - just use this domain plus the path. (If this isn't set, things get complicated).

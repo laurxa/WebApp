@@ -1,11 +1,11 @@
 {% if messages %}
     {% for message in messages %}
         <script>
-            {% if message.tags == 'success' %}
-                var icon = '<i class="material-icons" style="margin-right: 10px">done</i>';
-            {% endif %}
+            var content = '<span>{{ message }}</span>';
 
-            var content = icon + '<span>{{ message }}</span>';
+            {% if message.tags == 'success' %}
+                content = '<i class="material-icons" style="margin-right: 10px">done</i>' + content;
+            {% endif %}
 
             Materialize.toast(content, 3200);
         </script>
