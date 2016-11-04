@@ -138,7 +138,7 @@ STATICFILES_DIRS = (
 
 # AWS S3 CDN
 
-AWS_STORAGE_BUCKET_NAME = 'citation-manager-cdn'
+AWS_STORAGE_BUCKET_NAME = 'team-p-cdn'
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_KEY']
 
